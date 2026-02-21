@@ -1,0 +1,175 @@
+[
+    {
+        "id": 1,
+        "name": "Manish Kumar Gupta",
+        "role": "President",
+        "initials": "MKG",
+        "photo_url": "/team/manish.jpeg",
+        "bio": [
+            "B-tech 1st year",
+            "Robotics and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            1
+        ],
+        "email": "MANISH.20251RAI0004@presidencyuniversity.in",
+        "linkedin": "alexchen",
+        "joinedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "name": "Yashwanth V",
+        "role": "Vice President",
+        "initials": "YV",
+        "photo_url": "/team/yashwanth.jpeg",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            2
+        ],
+        "email": "yashwanth.20251cai0106@presidencyuniversity.in",
+        "linkedin": "priyasharma",
+        "joinedAt": "2025-02-15T10:00:00Z"
+    },
+    {
+        "id": 3,
+        "name": "Vinil Reddy S",
+        "role": "Secretary",
+        "initials": "VS",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science(Cyber Security)",
+            "Presidency University"
+        ],
+        "projects": [
+            3
+        ],
+        "email": "VINIL.20251CCS0176@presidencyuniversity.in",
+        "linkedin": "jameswilson",
+        "joinedAt": "2025-04-20T10:00:00Z"
+    },
+    {
+        "id": 4,
+        "name": "Rohit Mahto",
+        "role": "Joint Secretary",
+        "initials": "RM",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            4
+        ],
+        "email": "ROHITH.20251CAI0225@presidencyuniversity.in",
+        "linkedin": "emmarodriguez",
+        "joinedAt": "2025-06-10T10:00:00Z"
+    },
+    {
+        "id": 5,
+        "name": "",
+        "role": "Event Co-ordinator",
+        "initials": "",
+        "bio": [
+            "B-tech 1st year",
+            "",
+            "Presidency University"
+        ],
+        "projects": [
+            5
+        ],
+        "email": "david@ecotech.club",
+        "linkedin": "davidkim",
+        "joinedAt": "2025-08-01T10:00:00Z"
+    },
+    {
+        "id": 6,
+        "name": "S Edwin",
+        "role": "Technical Lead",
+        "initials": "E",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            6
+        ],
+        "email": "EDWIN.20251CAI0091@PRESIDENCYUNIVERSITY.IN",
+        "linkedin": "davidkim",
+        "joinedAt": "2025-08-01T10:00:00Z"
+    },
+    {
+        "id": 7,
+        "name": "Samarth M",
+        "role": "Volunteer Head",
+        "initials": "SM",
+        "bio": [
+            "B-tech 1st year",
+            "Robotics and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            7
+        ],
+        "email": "samarth.20251rai0023@presidencyuniversity.in",
+        "linkedin": "sofiamartinez",
+        "joinedAt": "2025-09-15T10:00:00Z"
+    },
+    {
+        "id": 8,
+        "name": "Varun Dinesh T V",
+        "role": "Creative Head",
+        "initials": "VD",
+        "bio": [
+            "B-tech 1st year",
+            "Robotics and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            8
+        ],
+        "email": "VARUN.20251RAI0007@presidencyuniversity.in",
+        "linkedin": "davidkim",
+        "joinedAt": "2025-08-01T10:00:00Z"
+    },
+    {
+        "id": 9,
+        "name": "Apeksha L",
+        "role": "Social Media Head",
+        "initials": "A",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science and Artificial Intelligence",
+            "Presidency University"
+        ],
+        "projects": [
+            9
+        ],
+        "email": "APEKSHA.20251CAI0278@presidencyuniversity.in",
+        "linkedin": "davidkim",
+        "joinedAt": "2025-08-01T10:00:00Z"
+    },
+    {
+        "id": 10,
+        "name": "Hemanth GS",
+        "role": "Video Editor",
+        "initials": "H",
+        "photo_url": "/team/hemanth.jpeg",
+        "bio": [
+            "B-tech 1st year",
+            "Computer Science(Cyber Security)",
+            "Presidency University"
+        ],
+        "projects": [
+            10
+        ],
+        "email": "HEMANTH.20251CCS0188@PRESIDENCYUNIVERSITY.IN",
+        "linkedin": "davidkim",
+        "joinedAt": "2025-08-01T10:00:00Z"
+    }
+]
