@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Sustainable Tech Workshop",
+        "date": "Feb 15, 2026",
+        "time": "3:00 PM",
+        "category": "Workshop",
+        "attendees": 24,
+        "description": "Learn how to build sustainable technology solutions that minimize environmental impact while maximizing efficiency.",
+        "location": "Innovation Hub, Room 203",
+        "speaker": "Dr. Sarah Green",
+        "createdAt": "2026-01-01T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "title": "Green Innovation Hackathon",
+        "date": "Feb 28, 2026",
+        "time": "9:00 AM",
+        "category": "Hackathon",
+        "attendees": 45,
+        "description": "48-hour hackathon to develop innovative solutions for environmental challenges. Teams of 4-6 members compete for prizes.",
+        "location": "Tech Campus, Main Auditorium",
+        "speaker": "Multiple Mentors",
+        "createdAt": "2026-01-05T10:00:00Z"
+    },
+    {
+        "id": 3,
+        "title": "Environmental Impact Talk",
+        "date": "Mar 8, 2026",
+        "time": "5:00 PM",
+        "category": "Talk",
+        "attendees": 32,
+        "description": "Expert panel discussion on measuring and reducing the environmental impact of technology companies.",
+        "location": "Conference Center, Hall A",
+        "speaker": "Panel of Industry Experts",
+        "createdAt": "2026-01-10T10:00:00Z"
+    },
+    {
+        "id": 4,
+        "title": "Solar Energy 101",
+        "date": "Mar 15, 2026",
+        "time": "2:00 PM",
+        "category": "Workshop",
+        "attendees": 18,
+        "description": "Hands-on workshop on solar panel installation and maintenance for beginners.",
+        "location": "Engineering Building, Lab 105",
+        "speaker": "Prof. Michael Sun",
+        "createdAt": "2026-01-15T10:00:00Z"
+    },
+    {
+        "id": 5,
+        "title": "Carbon Neutral Campus Initiative",
+        "date": "Mar 22, 2026",
+        "time": "11:00 AM",
+        "category": "Meeting",
+        "attendees": 15,
+        "description": "Planning session for making our campus carbon neutral by 2030.",
+        "location": "Student Union, Meeting Room B",
+        "speaker": "Campus Sustainability Committee",
+        "createdAt": "2026-01-20T10:00:00Z"
+    }
+]

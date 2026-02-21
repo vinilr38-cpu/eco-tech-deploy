@@ -1,0 +1,145 @@
+[
+    {
+        "id": 1,
+        "title": "Solar Energy Initiative",
+        "description": "Building affordable solar solutions for communities",
+        "longDescription": "Our flagship project aims to design and build cost-effective solar energy systems for underserved communities. We're working on modular solar panels that can be easily installed and maintained by local residents.",
+        "icon": "☀️",
+        "status": "Active",
+        "membersNeeded": 5,
+        "skills": [
+            "Hardware",
+            "Sustainability",
+            "Electronics"
+        ],
+        "lead": "Alex Chen",
+        "members": [],
+        "milestones": [
+            {
+                "title": "Prototype Design",
+                "completed": true
+            },
+            {
+                "title": "First Installation",
+                "completed": true
+            },
+            {
+                "title": "Community Training",
+                "completed": false
+            },
+            {
+                "title": "Scale to 10 Homes",
+                "completed": false
+            }
+        ],
+        "createdAt": "2025-06-01T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "title": "Plastic Waste Tracking App",
+        "description": "Mobile app to track and reduce plastic consumption",
+        "longDescription": "A mobile application that helps users track their plastic consumption, find plastic-free alternatives, and connect with local recycling programs. Features include barcode scanning, gamification, and community challenges.",
+        "icon": "♻️",
+        "status": "Active",
+        "membersNeeded": 8,
+        "skills": [
+            "Web Dev",
+            "Mobile Dev",
+            "UI/UX",
+            "React Native"
+        ],
+        "lead": "Priya Sharma",
+        "members": [],
+        "milestones": [
+            {
+                "title": "UI/UX Design",
+                "completed": true
+            },
+            {
+                "title": "Backend Development",
+                "completed": true
+            },
+            {
+                "title": "Mobile App Beta",
+                "completed": false
+            },
+            {
+                "title": "Public Launch",
+                "completed": false
+            }
+        ],
+        "createdAt": "2025-08-15T10:00:00Z"
+    },
+    {
+        "id": 3,
+        "title": "Carbon Footprint Calculator",
+        "description": "Interactive tool to measure personal carbon impact",
+        "longDescription": "An interactive web tool that calculates personal and household carbon footprints based on lifestyle choices. Provides personalized recommendations for reducing carbon emissions.",
+        "icon": "🌍",
+        "status": "Planning",
+        "membersNeeded": 6,
+        "skills": [
+            "Data Science",
+            "Frontend",
+            "Python",
+            "JavaScript"
+        ],
+        "lead": "James Wilson",
+        "members": [],
+        "milestones": [
+            {
+                "title": "Research Phase",
+                "completed": true
+            },
+            {
+                "title": "Algorithm Design",
+                "completed": false
+            },
+            {
+                "title": "Frontend Development",
+                "completed": false
+            },
+            {
+                "title": "Beta Testing",
+                "completed": false
+            }
+        ],
+        "createdAt": "2025-12-01T10:00:00Z"
+    },
+    {
+        "id": 4,
+        "title": "Smart Garden Monitor",
+        "description": "IoT solution for sustainable urban gardening",
+        "longDescription": "An IoT-based system that monitors soil moisture, sunlight, and temperature to optimize plant care in urban gardens. Includes automated watering and mobile notifications.",
+        "icon": "🌱",
+        "status": "Active",
+        "membersNeeded": 4,
+        "skills": [
+            "IoT",
+            "Arduino",
+            "Python",
+            "Mobile Dev"
+        ],
+        "lead": "Emma Rodriguez",
+        "members": [],
+        "milestones": [
+            {
+                "title": "Sensor Selection",
+                "completed": true
+            },
+            {
+                "title": "Prototype Build",
+                "completed": true
+            },
+            {
+                "title": "App Integration",
+                "completed": false
+            },
+            {
+                "title": "Field Testing",
+                "completed": false
+            }
+        ],
+        "createdAt": "2025-10-01T10:00:00Z"
+    }
+]
