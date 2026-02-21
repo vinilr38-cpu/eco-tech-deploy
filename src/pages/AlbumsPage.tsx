@@ -8,28 +8,9 @@ export default function AlbumsPage() {
             title: "Chip to Crop",
             date: "October 2025",
             cover: "/images/chip.jpeg",
+            photos: 20
         },
-        {
-            id: 2,
-            title: "Tech Innovation Summit",
-            date: "November 2025",
-            cover: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800",
-            photos: 45
-        },
-        {
-            id: 3,
-            title: "Campus Clean-up",
-            date: "December 2025",
-            cover: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=800",
-            photos: 18
-        },
-        {
-            id: 4,
-            title: "Robotics Workshop",
-            date: "January 2026",
-            cover: "https://images.unsplash.com/photo-1581092921461-eab62e97a782?auto=format&fit=crop&q=80&w=800",
-            photos: 32
-        }
+
     ];
 
     return (
