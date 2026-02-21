@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { ArrowRight, Leaf, Calendar, Users, Folder, ChevronRight } from 'lucide-react';
+import { Users, ChevronRight, Calendar, Folder, ArrowRight, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { statsApi, eventsApi, projectsApi, type Stats, type Event, type Project } from '../services/api';
+import { statsApi, type Stats } from '../services/api';
 import InteractiveButton from '../components/InteractiveButton';
 
 export default function HomePage() {
     const [stats, setStats] = useState<Stats | null>(null);
-    const [featuredEvents, setFeaturedEvents] = useState<Event[]>([]);
-    const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
 
     const containerVariants: Variants = {
@@ -32,28 +30,18 @@ export default function HomePage() {
         },
     };
 
-    const [error, setError] = useState<string | null>(null);
-
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchStats = async () => {
             try {
-                setLoading(true);
-                const [statsRes, eventsRes, projectsRes] = await Promise.all([
-                    statsApi.get(),
-                    eventsApi.getAll(),
-                    projectsApi.getAll(),
-                ]);
-                setStats(statsRes.data);
-                setFeaturedEvents(eventsRes.data.slice(0, 3));
-                setFeaturedProjects(projectsRes.data.slice(0, 3));
-            } catch (err) {
-                console.error('Error fetching data:', err);
-                setError('Some features are currently unavailable. Please check your connection.');
+                const response = await statsApi.get();
+                setStats(response.data);
+            } catch (error) {
+                console.error('Error fetching stats:', error);
             } finally {
                 setLoading(false);
             }
         };
-        fetchData();
+        fetchStats();
     }, []);
 
     const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeg8znOxHmRNuXoV7wjP60tBGm0SGUjhImWETkB1L7l_yHZbQ/viewform?usp=sharing&ouid=113079983235534936552";
@@ -123,14 +111,11 @@ export default function HomePage() {
              border border-emerald-400/15
              shadow-[0_0_120px_rgba(16,185,129,0.15)]"
                     >
-
-                        {/* Soft horizon glow */}
                         <div className="absolute inset-0">
                             <div className="absolute bottom-0 left-0 right-0 h-2/3
                     bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.35),transparent_70%)]" />
                         </div>
 
-                        {/* Animated energy waves */}
                         <motion.div
                             className="absolute bottom-0 left-[-20%] right-[-20%] h-[220px]
                bg-[linear-gradient(90deg,rgba(16,185,129,0.15),rgba(6,182,212,0.15),rgba(16,185,129,0.15))]
@@ -147,12 +132,11 @@ export default function HomePage() {
                             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
                         />
 
-                        {/* Light streaks */}
                         {[...Array(6)].map((_, i) => (
                             <motion.div
                                 key={i}
                                 className="absolute bottom-0 h-[2px]
-                 bg-gradient-to-r from-transparent via-emerald-400 to-transparent"
+                  bg-gradient-to-r from-transparent via-emerald-400 to-transparent"
                                 style={{
                                     left: `${10 + i * 15}%`,
                                     width: "140px",
@@ -167,7 +151,6 @@ export default function HomePage() {
                             />
                         ))}
 
-                        {/* Center content */}
                         <div className="absolute inset-0 flex items-center justify-center">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
@@ -180,34 +163,21 @@ export default function HomePage() {
                      bg-clip-text text-transparent">
                                     Shaping the Future of Sustainable Technology
                                 </h1>
-
                                 <p className="mt-6 text-slate-300 text-base md:text-lg leading-relaxed">
                                     EcoTech builds intelligent systems that balance innovation,
                                     efficiency, and environmental responsibility.
                                 </p>
-
-                                {/* Animated underline */}
                                 <motion.div
                                     className="mx-auto mt-8 h-[3px] w-28 rounded-full
-                   bg-gradient-to-r from-emerald-400 to-cyan-400"
+                    bg-gradient-to-r from-emerald-400 to-cyan-400"
                                     animate={{ width: ["4rem", "7rem", "4rem"] }}
                                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                                 />
                             </motion.div>
                         </div>
-
                     </motion.div>
                 </div>
             </section>
-
-            {/* Error Message */}
-            {error && !loading && (
-                <div className="max-w-6xl mx-auto px-4 py-8">
-                    <div className="p-4 rounded-xl border border-red-500/20 bg-red-900/10 text-red-400 text-center">
-                        {error}
-                    </div>
-                </div>
-            )}
 
             {/* Stats Section */}
             {stats && !loading && (
@@ -244,7 +214,7 @@ export default function HomePage() {
                 </section>
             )}
 
-            {/* Featured Events Preview */}
+            {/* Upcoming Events Preview */}
             <section className="py-16 px-4 bg-gradient-to-b from-slate-950/50 to-emerald-950/30">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
@@ -262,48 +232,29 @@ export default function HomePage() {
                         </Link>
                     </motion.div>
 
-                    {loading ? (
-                        <div className="flex justify-center py-12">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400"></div>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {featuredEvents.map((event) => (
-                                <motion.div
-                                    key={event.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    whileHover={{ y: -5, borderColor: '#34d399' }}
-                                    className="p-6 rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-900/20 to-slate-900/40 hover:from-emerald-900/40 hover:to-slate-900/60 transition-all duration-300"
-                                >
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                                            <span className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm">
-                                                {event.category}
-                                            </span>
-                                        </div>
-                                        <Calendar className="w-5 h-5 text-emerald-400" />
-                                    </div>
-                                    <div className="space-y-2 text-gray-400">
-                                        <p>📅 {event.date}</p>
-                                        <p>🕐 {event.time}</p>
-                                        <p>👥 {event.attendees} interested</p>
-                                    </div>
-                                    <Link to={`/events/${event.id}`}>
-                                        <button className="mt-4 w-full py-2 bg-emerald-500/10 border border-emerald-400 text-emerald-400 rounded-lg hover:bg-emerald-500/20 transition-all">
-                                            View Details
-                                        </button>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="col-span-full p-12 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-900/10 to-slate-900/40 text-center"
+                        >
+                            <Calendar className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                            <h3 className="text-2xl font-bold mb-4">Events Coming Soon</h3>
+                            <p className="text-gray-400 max-w-lg mx-auto mb-6">
+                                We're planning some exciting workshops and hackathons. Stay tuned for updates on our next big event!
+                            </p>
+                            <Link to="/events">
+                                <InteractiveButton variant="outline">
+                                    Notify Me
+                                </InteractiveButton>
+                            </Link>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* Featured Projects Preview */}
+            {/* Active Projects Preview */}
             <section className="py-16 px-4">
                 <div className="max-w-6xl mx-auto">
                     <motion.div
@@ -321,44 +272,25 @@ export default function HomePage() {
                         </Link>
                     </motion.div>
 
-                    {loading ? (
-                        <div className="flex justify-center py-12">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400"></div>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {featuredProjects.map((project) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="p-6 rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-900/20 to-slate-900/40 hover:border-cyan-400/50 transition-all duration-300"
-                                >
-                                    <div className="text-5xl mb-4">{project.icon}</div>
-                                    <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                                    <p className="text-gray-400 mb-4">{project.description}</p>
-                                    <div className="flex items-center justify-between mb-4">
-                                        <span
-                                            className={`px-3 py-1 rounded-full text-sm ${project.status === 'Active'
-                                                ? 'bg-emerald-500/20 text-emerald-300'
-                                                : 'bg-yellow-500/20 text-yellow-300'
-                                                }`}
-                                        >
-                                            {project.status}
-                                        </span>
-                                        <span className="text-cyan-400 font-semibold">{project.membersNeeded} spots</span>
-                                    </div>
-                                    <Link to={`/projects/${project.id}`}>
-                                        <button className="w-full py-2 bg-cyan-500/10 border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-all">
-                                            View Project <ArrowRight className="w-3 h-3 inline ml-1" />
-                                        </button>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="col-span-full p-12 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-900/10 to-slate-900/40 text-center"
+                        >
+                            <Folder className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                            <h3 className="text-2xl font-bold mb-4">Projects Coming Soon</h3>
+                            <p className="text-gray-400 max-w-lg mx-auto mb-6">
+                                Our team is currently ideating new projects to tackle environmental challenges. Check back soon to see what we're building!
+                            </p>
+                            <Link to="/projects">
+                                <InteractiveButton variant="outline">
+                                    See What's Brewing
+                                </InteractiveButton>
+                            </Link>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

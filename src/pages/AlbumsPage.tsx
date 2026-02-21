@@ -1,16 +1,18 @@
-import { motion } from 'framer-motion';
-import { Image, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Image, Calendar, X } from 'lucide-react';
 
 export default function AlbumsPage() {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     const albums = [
         {
             id: 1,
             title: "Chip to Crop",
             date: "October 2025",
             cover: "/images/chip.jpeg",
-            photos: 20
+            photos: 1
         },
-
     ];
 
     return (
@@ -35,6 +37,7 @@ export default function AlbumsPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -5 }}
+                            onClick={() => setSelectedImage(album.cover)}
                             className="group cursor-pointer rounded-xl overflow-hidden border border-emerald-500/20 bg-gradient-to-br from-emerald-900/20 to-slate-900/40"
                         >
                             <div className="relative h-48 overflow-hidden">
@@ -63,6 +66,46 @@ export default function AlbumsPage() {
                     ))}
                 </div>
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+                    >
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedImage(null);
+                            }}
+                        >
+                            <X className="w-6 h-6" />
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={selectedImage}
+                                alt="Album Preview"
+                                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
