@@ -200,6 +200,15 @@ export default function HomePage() {
                 </div>
             </section>
 
+            {/* Error Message */}
+            {error && !loading && (
+                <div className="max-w-6xl mx-auto px-4 py-8">
+                    <div className="p-4 rounded-xl border border-red-500/20 bg-red-900/10 text-red-400 text-center">
+                        {error}
+                    </div>
+                </div>
+            )}
+
             {/* Stats Section */}
             {stats && !loading && (
                 <section className="py-16 px-4">
