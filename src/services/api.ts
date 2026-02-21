@@ -1,9 +1,12 @@
 import axios from 'axios';
 
 const isProduction = import.meta.env.PROD;
+const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '');
 const API_BASE_URL = isProduction
-    ? (import.meta.env.VITE_BASE_PATH || '') + '/api'
+    ? `${BASE_URL}/api`
     : 'http://localhost:3001/api';
+
+console.log('API Base URL:', API_BASE_URL);
 
 const api = axios.create({
     baseURL: API_BASE_URL,
@@ -11,6 +14,14 @@ const api = axios.create({
         'Content-Type': 'application/json',
     },
 });
+
+api.interceptors.response.use(
+    response => response,
+    error => {
+        console.error('API Error:', error.response?.status, error.message, error.config?.url);
+        return Promise.reject(error);
+    }
+);
 
 // Types
 export interface Event {

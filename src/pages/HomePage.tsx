@@ -32,9 +32,12 @@ export default function HomePage() {
         },
     };
 
+    const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true);
                 const [statsRes, eventsRes, projectsRes] = await Promise.all([
                     statsApi.get(),
                     eventsApi.getAll(),
@@ -43,8 +46,9 @@ export default function HomePage() {
                 setStats(statsRes.data);
                 setFeaturedEvents(eventsRes.data.slice(0, 3));
                 setFeaturedProjects(projectsRes.data.slice(0, 3));
-            } catch (error) {
-                console.error('Error fetching data:', error);
+            } catch (err) {
+                console.error('Error fetching data:', err);
+                setError('Some features are currently unavailable. Please check your connection.');
             } finally {
                 setLoading(false);
             }

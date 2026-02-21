@@ -7,20 +7,18 @@ import { eventsApi, type Event } from '../services/api';
 export default function EventsPage() {
     const [events, setEvents] = useState<Event[]>([]);
     const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [categoryFilter, setCategoryFilter] = useState('All');
-
-    const categories = ['All', 'Workshop', 'Hackathon', 'Talk', 'Meeting'];
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
+                setLoading(true);
                 const response = await eventsApi.getAll();
                 setEvents(response.data);
                 setFilteredEvents(response.data);
-            } catch (error) {
-                console.error('Error fetching events:', error);
+            } catch (err) {
+                console.error('Error fetching events:', err);
+                setError('Failed to load events. Please try again later.');
             } finally {
                 setLoading(false);
             }
@@ -87,8 +85,8 @@ export default function EventsPage() {
                                     key={category}
                                     onClick={() => setCategoryFilter(category)}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${categoryFilter === category
-                                            ? 'bg-emerald-500 text-slate-950'
-                                            : 'bg-slate-800/50 text-gray-300 hover:bg-emerald-500/20 border border-emerald-500/20'
+                                        ? 'bg-emerald-500 text-slate-950'
+                                        : 'bg-slate-800/50 text-gray-300 hover:bg-emerald-500/20 border border-emerald-500/20'
                                         }`}
                                 >
                                     {category}
@@ -103,6 +101,8 @@ export default function EventsPage() {
                     <div className="flex justify-center py-20">
                         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-emerald-400"></div>
                     </div>
+                ) : error ? (
+                    <div className="text-center py-20 text-red-400 font-medium">{error}</div>
                 ) : filteredEvents.length === 0 ? (
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -133,9 +133,9 @@ export default function EventsPage() {
                                     <div>
                                         <h3 className="text-xl font-bold mb-2">{event.title}</h3>
                                         <span className={`inline-block px-3 py-1 rounded-full text-sm ${event.category === 'Workshop' ? 'bg-emerald-500/20 text-emerald-300' :
-                                                event.category === 'Hackathon' ? 'bg-purple-500/20 text-purple-300' :
-                                                    event.category === 'Talk' ? 'bg-cyan-500/20 text-cyan-300' :
-                                                        'bg-yellow-500/20 text-yellow-300'
+                                            event.category === 'Hackathon' ? 'bg-purple-500/20 text-purple-300' :
+                                                event.category === 'Talk' ? 'bg-cyan-500/20 text-cyan-300' :
+                                                    'bg-yellow-500/20 text-yellow-300'
                                             }`}>
                                             {event.category}
                                         </span>

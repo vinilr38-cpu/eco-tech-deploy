@@ -7,13 +7,17 @@ export default function MembersPage() {
     const [members, setMembers] = useState<Member[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
         const fetchMembers = async () => {
             try {
+                setLoading(true);
                 const response = await membersApi.getAll();
                 setMembers(response.data);
-            } catch (error) {
-                console.error('Error:', error);
+            } catch (err) {
+                console.error('Error:', err);
+                setError('Failed to load team members. Please try again later.');
             } finally {
                 setLoading(false);
             }
@@ -31,6 +35,8 @@ export default function MembersPage() {
 
                 {loading ? (
                     <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-16 w-16 border-b-2 border-emerald-400"></div></div>
+                ) : error ? (
+                    <div className="text-center py-20 text-red-400 font-medium">{error}</div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {members.map((member) => (
