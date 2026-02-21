@@ -7,7 +7,12 @@ import { eventsApi, type Event } from '../services/api';
 export default function EventsPage() {
     const [events, setEvents] = useState<Event[]>([]);
     const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [categoryFilter, setCategoryFilter] = useState('All');
     const [error, setError] = useState<string | null>(null);
+
+    const categories = ['All', 'Workshop', 'Hackathon', 'Talk', 'Meeting'];
 
     useEffect(() => {
         const fetchEvents = async () => {
