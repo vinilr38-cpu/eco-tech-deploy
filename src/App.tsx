@@ -100,7 +100,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   // You can set this to your video path once you have it
-  const videoAddress = "/splash-video.mp4";
+  const videoAddress = ""; // Set to empty as /splash-video.mp4 is 0 bytes
 
   return (
     <Router>
