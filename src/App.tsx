@@ -87,7 +87,6 @@ function Layout({ children }: { children: React.ReactNode }) {
           <p>© 2026 Eco Tech Club. Building the future sustainably.</p>
           <div className="mt-4 flex gap-6 justify-center">
             <a href="#" className="hover:text-emerald-400 transition-colors">Twitter</a>
-            <a href="#" className="hover:text-emerald-400 transition-colors">LinkedIn</a>
             <a href="#" className="hover:text-emerald-400 transition-colors">Instagram</a>
           </div>
         </div>
