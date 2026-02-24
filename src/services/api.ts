@@ -32,8 +32,11 @@ export interface Event {
     category: string;
     attendees: number;
     description?: string;
+    longDescription?: string;
     location?: string;
     speaker?: string;
+    whatsappLink?: string;
+    registrationLink?: string;
     createdAt?: string;
 }
 

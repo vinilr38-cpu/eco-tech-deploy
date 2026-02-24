@@ -233,23 +233,48 @@ export default function HomePage() {
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="col-span-full p-12 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-900/10 to-slate-900/40 text-center"
-                        >
-                            <Calendar className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-                            <h3 className="text-2xl font-bold mb-4">Events Coming Soon</h3>
-                            <p className="text-gray-400 max-w-lg mx-auto mb-6">
-                                We're planning some exciting workshops and hackathons. Stay tuned for updates on our next big event!
-                            </p>
-                            <Link to="/events">
-                                <InteractiveButton variant="outline">
-                                    Notify Me
-                                </InteractiveButton>
-                            </Link>
-                        </motion.div>
+                        {loading ? (
+                            <div className="col-span-full text-center py-10 text-emerald-400">Loading events...</div>
+                        ) : stats && stats.upcomingEvents > 0 ? (
+                            <div className="col-span-full">
+                                {/* We can fetch the latest event here or just show a more specialized card */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="p-12 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-900/10 to-slate-900/40 text-center"
+                                >
+                                    <Calendar className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                                    <h3 className="text-2xl font-bold mb-4">Registration Open!</h3>
+                                    <p className="text-gray-300 text-lg max-w-lg mx-auto mb-6">
+                                        Our Orientation 2026 is just around the corner. Join us for an amazing journey into sustainable technology.
+                                    </p>
+                                    <Link to="/events/1">
+                                        <InteractiveButton>
+                                            Join Orientation <ArrowRight className="w-4 h-4" />
+                                        </InteractiveButton>
+                                    </Link>
+                                </motion.div>
+                            </div>
+                        ) : (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="col-span-full p-12 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-900/10 to-slate-900/40 text-center"
+                            >
+                                <Calendar className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                                <h3 className="text-2xl font-bold mb-4">Events Coming Soon</h3>
+                                <p className="text-gray-400 max-w-lg mx-auto mb-6">
+                                    We're planning some exciting workshops and hackathons. Stay tuned for updates on our next big event!
+                                </p>
+                                <Link to="/events">
+                                    <InteractiveButton variant="outline">
+                                        Notify Me
+                                    </InteractiveButton>
+                                </Link>
+                            </motion.div>
+                        )}
                     </div>
                 </div>
             </section>
