@@ -37,6 +37,7 @@ export interface Event {
     speaker?: string;
     whatsappLink?: string;
     registrationLink?: string;
+    status: 'upcoming' | 'completed';
     createdAt?: string;
 }
 

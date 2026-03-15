@@ -247,11 +247,11 @@ export default function HomePage() {
                                     <Calendar className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
                                     <h3 className="text-2xl font-bold mb-4">Registration Open!</h3>
                                     <p className="text-gray-300 text-lg max-w-lg mx-auto mb-6">
-                                        Our Orientation 2026 is just around the corner. Join us for an amazing journey into sustainable technology.
+                                        Check out our upcoming events and be part of the change. Join us for an amazing journey into sustainable technology.
                                     </p>
-                                    <Link to="/events/1">
+                                    <Link to="/events">
                                         <InteractiveButton>
-                                            Join Orientation <ArrowRight className="w-4 h-4" />
+                                            View Upcoming Events <ArrowRight className="w-4 h-4" />
                                         </InteractiveButton>
                                     </Link>
                                 </motion.div>
